@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+dataset/
+.env
+*.zip
+*.h5
+*.keras

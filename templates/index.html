@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crop Disease AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 420px;
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.upload-box {
+    border: 2px dashed rgba(255,255,255,0.4);
+    padding: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-box:hover {
+    border-color: #00ffcc;
+    transform: scale(1.02);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.preview {
+    margin-top: 15px;
+}
+
+.preview img {
+    width: 100%;
+    border-radius: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #00ffcc, #00ccff);
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffcc;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0,255,200,0.1);
+    border: 1px solid rgba(0,255,200,0.3);
+}
+
+.loader {
+    margin-top: 20px;
+    border: 5px solid rgba(255,255,255,0.2);
+    border-top: 5px solid #00ffcc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🌱 Crop Disease AI</h1>
+
+    <form method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+        <label class="upload-box" id="drop-area">
+            Drag & Drop or Click to Upload
+            <input type="file" name="file" id="fileInput" required>
+        </label>
+
+        <div class="preview" id="preview"></div>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    <div class="loader" id="loader"></div>
+
+    {% if result %}
+        <div class="result">
+            {{ result }}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const preview = document.getElementById("preview");
+const dropArea = document.getElementById("drop-area");
+
+fileInput.addEventListener("change", previewImage);
+
+function previewImage() {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+        preview.innerHTML = `<img src="${reader.result}">`;
+    };
+    reader.readAsDataURL(file);
+}
+
+// Drag & Drop
+dropArea.addEventListener("dragover", e => {
+    e.preventDefault();
+    dropArea.style.borderColor = "#00ffcc";
+});
+
+dropArea.addEventListener("dragleave", () => {
+    dropArea.style.borderColor = "rgba(255,255,255,0.4)";
+});
+
+dropArea.addEventListener("drop", e => {
+    e.preventDefault();
+    fileInput.files = e.dataTransfer.files;
+    previewImage();
+});
+
+// Loader
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+                                             precision    recall  f1-score   support
+
+              Pepper  bell   Bacterial spot       0.91      0.88      0.89       199
+                     Pepper  bell   healthy       0.96      0.95      0.95       295
+                      Potato   Early blight       0.95      0.94      0.94       200
+                       Potato   Late blight       0.83      0.81      0.82       200
+                           Potato   healthy       0.71      0.57      0.63        30
+                      Tomato Bacterial spot       0.96      0.94      0.95       425
+                        Tomato Early blight       0.81      0.65      0.72       200
+                         Tomato Late blight       0.83      0.84      0.84       381
+                           Tomato Leaf Mold       0.94      0.61      0.74       190
+                  Tomato Septoria leaf spot       0.77      0.92      0.84       354
+Tomato Spider mites Two spotted spider mite       0.95      0.68      0.79       335
+                        Tomato  Target Spot       0.64      0.88      0.74       280
+      Tomato  Tomato YellowLeaf  Curl Virus       0.96      0.98      0.97       641
+                Tomato  Tomato mosaic virus       0.83      0.88      0.86        74
+                             Tomato healthy       0.91      1.00      0.95       318
+
+                                   accuracy                           0.87      4122
+                                  macro avg       0.86      0.83      0.84      4122
+                               weighted avg       0.88      0.87      0.87      4122
