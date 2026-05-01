@@ -3,5 +3,4 @@ __pycache__/
 dataset/
 .env
 *.zip
-*.h5
 *.keras
