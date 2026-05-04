@@ -92,7 +92,7 @@ history = model.fit(
 # -----------------------------
 # 💾 SAVE MODEL
 # -----------------------------
-model.save("cnn_model.keras")
+model.save("models/cnn_model.keras")
 
 # Save labels
 with open("cnn_labels.json", "w") as f:
@@ -109,7 +109,8 @@ plt.plot(history.history['val_accuracy'], label='Val Accuracy')
 plt.legend()
 plt.title("CNN Accuracy")
 plt.tight_layout()
-plt.savefig("cnn_accuracy.png")
+plt.savefig("outputs/cnn_accuracy.png")
+plt.close()
 
 # -----------------------------
 # 📉 LOSS GRAPH
@@ -120,7 +121,8 @@ plt.plot(history.history['val_loss'], label='Val Loss')
 plt.legend()
 plt.title("CNN Loss")
 plt.tight_layout()
-plt.savefig("cnn_loss.png")
+plt.savefig("outputs/cnn_loss.png")
+plt.close()
 
 # -----------------------------
 # 📌 CONFUSION MATRIX
@@ -142,7 +144,8 @@ plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.title("CNN Confusion Matrix")
 plt.tight_layout()
-plt.savefig("cnn_confusion_matrix.png")
+plt.savefig("outputs/cnn_confusion_matrix.png")
+plt.close()
 
 # -----------------------------
 # 📄 CLASSIFICATION REPORT
@@ -156,7 +159,7 @@ report = classification_report(
 print("\n📊 CNN Classification Report:\n")
 print(report)
 
-with open("cnn_classification_report.txt", "w") as f:
+with open("outputs/cnn_classification_report.txt", "w") as f:
     f.write(report)
 
 # -----------------------------

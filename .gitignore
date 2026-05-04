@@ -1,6 +1,27 @@
+# Python
 __pycache__/
 *.pyc
-dataset/
+*.pyo
+*.pyd
 .env
-*.zip
+
+# Dataset (too large for git)
+dataset/
+
+# Trained models (too large for git)
 *.keras
+*.h5
+models/
+
+# Outputs (generated at runtime)
+outputs/
+
+# Uploaded images (runtime data)
+static/uploads/
+
+# Archives
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
